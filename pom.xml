@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fh.framework</groupId>
+    <artifactId>driving</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <modules>
+        <module>driving-network</module>
+        <module>driving-config</module>
+        <module>driving-spring-boot-starter</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <distributionManagement>
+        <repository>
+            <!-- nexus服务器中用户名：在settings.xml中<server>的id-->
+            <id>shanz</id>
+            <name>deploy server releases</name>
+            <url>http://172.16.43.235:8085/nexus/content/repositories/shanz/</url>
+        </repository>
+        <!--<snapshotRepository>-->
+        <!--<id>releases</id>-->
+        <!--<name>snapshots</name>-->
+        <!--<url>https://XXX/content/repositories/snapshots/</url>-->
+        <!--</snapshotRepository>-->
+    </distributionManagement>
+
+
+
+    <build>
+    <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version> <!-- version mark 2.3.2 -->
+        <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+            <encoding>UTF-8</encoding>
+        </configuration>
+    </plugin>
+    </plugins>
+    </build>
+</project>

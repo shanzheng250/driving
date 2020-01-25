@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            xmlns:tool="http://www.springframework.org/schema/tool"
+            xmlns="http://driving.fh.com/schema/driving"
+            targetNamespace="http://driving.fh.com/schema/driving">
+
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+    <xsd:import namespace="http://www.springframework.org/schema/tool"/>
+
+    <xsd:annotation>
+        <xsd:documentation><![CDATA[
+	        这是driving服务的xsd配置定义
+		]]></xsd:documentation>
+    </xsd:annotation>
+
+
+    <xsd:complexType name="registryType">
+        <xsd:attribute name="id" type="xsd:ID" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The unique identifier for a bean. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="sysid" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The registry sysid. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="areacode" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The registry areacode. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="usercode" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The registry usercode. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="clientType">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="strategy" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The unique identifier for a bean. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="host" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The client host. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="port" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The client port. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="type" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The client type. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="serverType">
+        <xsd:attribute name="id" type="xsd:ID" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The unique identifier for a bean. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+         <xsd:attribute name="host" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The client host. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="port" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The client port. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="type" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The client type. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:element name="registry" type="registryType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ The registry config ]]></xsd:documentation>
+            <xsd:appinfo>
+                <tool:annotation>
+                    <tool:exports type="com.fh.framework.config.RegisterConfig"/>
+                </tool:annotation>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="client" type="clientType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ The client config ]]></xsd:documentation>
+            <xsd:appinfo>
+                <tool:annotation>
+                    <tool:exports type="com.fh.framework.config.ClientConfig"/>
+                </tool:annotation>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="server" type="serverType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ The server config ]]></xsd:documentation>
+            <xsd:appinfo>
+                <tool:annotation>
+                    <tool:exports type="com.fh.framework.config.ServerConfig"/>
+                </tool:annotation>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="strategy" type="parameterType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ The service url parameter ]]></xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="parameterType">
+        <xsd:attribute name="key" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The parameter message. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ref" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The parameter message-handle. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>
